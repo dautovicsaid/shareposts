@@ -25,12 +25,10 @@
 
     public function addPost($data){
       $this->db->query('INSERT INTO posts (title, user_id, body) VALUES(:title, :user_id, :body)');
-      // Bind values
       $this->db->bind(':title', $data['title']);
       $this->db->bind(':user_id', $data['user_id']);
       $this->db->bind(':body', $data['body']);
 
-      // Execute
       if($this->db->execute()){
         return true;
       } else {
@@ -40,12 +38,10 @@
 
     public function updatePost($data){
       $this->db->query('UPDATE posts SET title = :title, body = :body WHERE id = :id');
-      // Bind values
       $this->db->bind(':id', $data['id']);
       $this->db->bind(':title', $data['title']);
       $this->db->bind(':body', $data['body']);
 
-      // Execute
       if($this->db->execute()){
         return true;
       } else {
@@ -64,10 +60,8 @@
 
     public function deletePost($id){
       $this->db->query('DELETE FROM posts WHERE id = :id');
-      // Bind values
       $this->db->bind(':id', $id);
 
-      // Execute
       if($this->db->execute()){
         return true;
       } else {
